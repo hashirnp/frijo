@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:noviindus/core/constants/app_constants.dart';
-import 'package:noviindus/injection.dart';
-import 'package:noviindus/provider/feed_provider.dart';
-import 'package:noviindus/routes/routnames.dart';
-import 'package:noviindus/view/Widgets/feed_item_widget.dart';
-import 'package:noviindus/view/Widgets/profile_header_widget.dart';
+import 'package:frijo/core/constants/app_constants.dart';
+import 'package:frijo/injection.dart';
+import 'package:frijo/provider/feed_provider.dart';
+import 'package:frijo/routes/routnames.dart';
+import 'package:frijo/view/Widgets/feed_item_widget.dart';
+import 'package:frijo/view/Widgets/profile_header_widget.dart';
 import 'package:provider/provider.dart';
 import 'package:shimmer/shimmer.dart';
 

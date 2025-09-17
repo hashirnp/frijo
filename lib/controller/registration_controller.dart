@@ -1,6 +1,6 @@
 import 'dart:developer';
 
-import 'package:noviindus/core/network/dio_client.dart';
+import 'package:frijo/core/network/dio_client.dart';
 
 class RegistrationController {
   DioClient dioClient;

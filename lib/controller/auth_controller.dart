@@ -1,6 +1,6 @@
 import 'package:dio/dio.dart';
-import 'package:noviindus/core/network/api_endpoints.dart';
-import 'package:noviindus/core/network/dio_client.dart';
+import 'package:frijo/core/network/api_endpoints.dart';
+import 'package:frijo/core/network/dio_client.dart';
 
 class AuthController {
   final DioClient _client;

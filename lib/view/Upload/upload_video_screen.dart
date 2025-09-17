@@ -4,10 +4,10 @@ import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:noviindus/core/constants/app_constants.dart';
-import 'package:noviindus/injection.dart';
-import 'package:noviindus/provider/feed_provider.dart';
-import 'package:noviindus/view/Widgets/common_widgets.dart';
+import 'package:frijo/core/constants/app_constants.dart';
+import 'package:frijo/injection.dart';
+import 'package:frijo/provider/feed_provider.dart';
+import 'package:frijo/view/Widgets/common_widgets.dart';
 import 'package:provider/provider.dart';
 
 class UploadVideoScreen extends StatefulWidget {

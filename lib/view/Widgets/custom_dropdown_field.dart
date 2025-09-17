@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:noviindus/core/constants/app_constants.dart';
-import 'package:noviindus/view/theme/text_styles.dart';
+import 'package:frijo/core/constants/app_constants.dart';
+import 'package:frijo/view/theme/text_styles.dart';
 
 class CustomDropdownField<T> extends StatelessWidget {
   final String label;

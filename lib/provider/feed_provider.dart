@@ -1,10 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:noviindus/controller/feed_controller.dart';
-import 'package:noviindus/injection.dart';
-import 'package:noviindus/model/category_response/category.dart';
-import 'package:noviindus/model/category_response/category_response.dart';
-import 'package:noviindus/model/video_modal/video_modal.dart';
+import 'package:frijo/controller/feed_controller.dart';
+import 'package:frijo/injection.dart';
+import 'package:frijo/model/category_response/category.dart';
+import 'package:frijo/model/category_response/category_response.dart';
+import 'package:frijo/model/video_modal/video_modal.dart';
 
 class FeedProvider with ChangeNotifier {
   final FeedController _controller = getIt<FeedController>();

@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
-import 'package:noviindus/controller/auth_controller.dart';
-import 'package:noviindus/controller/registration_controller.dart';
-import 'package:noviindus/controller/feed_controller.dart';
-import 'package:noviindus/provider/auth_provider.dart';
-import 'package:noviindus/provider/feed_provider.dart';
+import 'package:frijo/controller/auth_controller.dart';
+import 'package:frijo/controller/registration_controller.dart';
+import 'package:frijo/controller/feed_controller.dart';
+import 'package:frijo/provider/auth_provider.dart';
+import 'package:frijo/provider/feed_provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'core/network/dio_client.dart';
 

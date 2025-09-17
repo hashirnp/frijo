@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:noviindus/core/constants/app_constants.dart';
+import 'package:frijo/core/constants/app_constants.dart';
 
-import 'package:noviindus/model/category_response/category.dart';
-import 'package:noviindus/view/Widgets/category_chip_widget.dart';
-import 'package:noviindus/view/theme/constants.dart';
-import 'package:noviindus/view/theme/text_styles.dart';
+import 'package:frijo/model/category_response/category.dart';
+import 'package:frijo/view/Widgets/category_chip_widget.dart';
+import 'package:frijo/view/theme/constants.dart';
+import 'package:frijo/view/theme/text_styles.dart';
 
 class ProfileHeaderWidget extends StatelessWidget {
   final List<Category> categories;

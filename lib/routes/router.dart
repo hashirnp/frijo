@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:noviindus/routes/routnames.dart';
-import 'package:noviindus/view/Auth/login_screen.dart';
-import 'package:noviindus/view/Upload/upload_video_screen.dart';
-import 'package:noviindus/view/home/home_screen.dart';
-import 'package:noviindus/view/splash_screen.dart';
+import 'package:frijo/routes/routnames.dart';
+import 'package:frijo/view/Auth/login_screen.dart';
+import 'package:frijo/view/Upload/upload_video_screen.dart';
+import 'package:frijo/view/home/home_screen.dart';
+import 'package:frijo/view/splash_screen.dart';
 
 class Routers {
   static Route<dynamic> generateRoute(RouteSettings settings) {

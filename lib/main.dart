@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:noviindus/provider/auth_provider.dart';
-import 'package:noviindus/provider/feed_provider.dart';
-import 'package:noviindus/routes/router.dart';
-import 'package:noviindus/routes/routnames.dart';
-import 'package:noviindus/view/splash_screen.dart';
+import 'package:frijo/provider/auth_provider.dart';
+import 'package:frijo/provider/feed_provider.dart';
+import 'package:frijo/routes/router.dart';
+import 'package:frijo/routes/routnames.dart';
+import 'package:frijo/view/splash_screen.dart';
 import 'package:provider/provider.dart';
 
 import 'injection.dart';

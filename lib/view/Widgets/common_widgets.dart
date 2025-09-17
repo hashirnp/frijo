@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:noviindus/core/constants/app_constants.dart';
-import 'package:noviindus/model/category_response/category.dart';
-import 'package:noviindus/provider/feed_provider.dart';
+import 'package:frijo/core/constants/app_constants.dart';
+import 'package:frijo/model/category_response/category.dart';
+import 'package:frijo/provider/feed_provider.dart';
 import 'package:provider/provider.dart';
 
 class CommonWidgets {

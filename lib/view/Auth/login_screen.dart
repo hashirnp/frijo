@@ -1,11 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'package:noviindus/core/constants/app_constants.dart';
-import 'package:noviindus/injection.dart';
-import 'package:noviindus/provider/auth_provider.dart';
-import 'package:noviindus/view/theme/constants.dart';
-import 'package:noviindus/view/theme/text_styles.dart';
+import 'package:frijo/core/constants/app_constants.dart';
+import 'package:frijo/injection.dart';
+import 'package:frijo/provider/auth_provider.dart';
+import 'package:frijo/view/theme/constants.dart';
+import 'package:frijo/view/theme/text_styles.dart';
 import 'package:provider/provider.dart';
 
 class LoginScreen extends StatefulWidget {

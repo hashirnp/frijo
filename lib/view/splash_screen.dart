@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:noviindus/core/constants/app_constants.dart';
-import 'package:noviindus/injection.dart';
-import 'package:noviindus/routes/routnames.dart';
+import 'package:frijo/core/constants/app_constants.dart';
+import 'package:frijo/injection.dart';
+import 'package:frijo/routes/routnames.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class SplashScreen extends StatefulWidget {

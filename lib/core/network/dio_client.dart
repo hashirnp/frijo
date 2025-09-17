@@ -30,9 +30,9 @@ import 'package:dio/io.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'package:noviindus/core/constants/app_constants.dart';
-import 'package:noviindus/injection.dart';
-import 'package:noviindus/view/splash_screen.dart';
+import 'package:frijo/core/constants/app_constants.dart';
+import 'package:frijo/injection.dart';
+import 'package:frijo/view/splash_screen.dart';
 
 class DioClient {
   String baseUrl = AppConstants.baseUrl;

@@ -2,12 +2,12 @@ import 'dart:convert';
 import 'dart:developer';
 
 import 'package:dio/dio.dart';
-import 'package:noviindus/core/constants/app_constants.dart';
-import 'package:noviindus/core/network/api_endpoints.dart';
-import 'package:noviindus/core/network/dio_client.dart';
-import 'package:noviindus/injection.dart';
-import 'package:noviindus/model/category_response/category_response.dart';
-import 'package:noviindus/model/video_modal/video_modal.dart';
+import 'package:frijo/core/constants/app_constants.dart';
+import 'package:frijo/core/network/api_endpoints.dart';
+import 'package:frijo/core/network/dio_client.dart';
+import 'package:frijo/injection.dart';
+import 'package:frijo/model/category_response/category_response.dart';
+import 'package:frijo/model/video_modal/video_modal.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class FeedController {

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:noviindus/core/constants/app_constants.dart';
-import 'package:noviindus/model/video_modal/video_modal.dart';
-import 'package:noviindus/view/Widgets/expandable_text.dart';
+import 'package:frijo/core/constants/app_constants.dart';
+import 'package:frijo/model/video_modal/video_modal.dart';
+import 'package:frijo/view/Widgets/expandable_text.dart';
 import 'package:video_player/video_player.dart';
 import 'package:chewie/chewie.dart';
 

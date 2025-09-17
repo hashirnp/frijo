@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:noviindus/injection.dart';
-import 'package:noviindus/provider/feed_provider.dart';
-import 'package:noviindus/view/theme/text_styles.dart';
+import 'package:frijo/injection.dart';
+import 'package:frijo/provider/feed_provider.dart';
+import 'package:frijo/view/theme/text_styles.dart';
 
 class CategoryChipWidget extends StatelessWidget {
   final String title;
