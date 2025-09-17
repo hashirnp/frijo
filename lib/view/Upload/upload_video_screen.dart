@@ -2,7 +2,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:noviindus/core/constants/app_constants.dart';
 import 'package:noviindus/injection.dart';
 import 'package:noviindus/provider/feed_provider.dart';
 import 'package:noviindus/view/Widgets/common_widgets.dart';
@@ -38,8 +40,8 @@ class _UploadVideoScreenState extends State<UploadVideoScreen> {
       body: Consumer<FeedProvider>(
         builder: (context, provider, child) {
           if (provider.isLoading!) {
-            return const Center(
-              child: CircularProgressIndicator(color: Colors.red),
+            return Center(
+              child: CircularProgressIndicator(color: AppConstants.red),
             );
           }
 
@@ -49,7 +51,7 @@ class _UploadVideoScreenState extends State<UploadVideoScreen> {
               ScaffoldMessenger.of(context).showSnackBar(
                 SnackBar(
                   content: Text(provider.errorMessage!),
-                  backgroundColor: Colors.red,
+                  backgroundColor: AppConstants.red,
                 ),
               );
               provider
@@ -63,7 +65,7 @@ class _UploadVideoScreenState extends State<UploadVideoScreen> {
               ScaffoldMessenger.of(context).showSnackBar(
                 SnackBar(
                   content: Text("Feed Uploaded Succesfully"),
-                  backgroundColor: Colors.red,
+                  backgroundColor: AppConstants.red,
                 ),
               );
               provider
@@ -118,10 +120,10 @@ class _UploadVideoScreenState extends State<UploadVideoScreen> {
                             vertical: 6,
                           ),
                           decoration: BoxDecoration(
-                            color: Colors.red.withValues(alpha: 0.2),
+                            color: AppConstants.red.withValues(alpha: 0.2),
                             borderRadius: BorderRadius.circular(24),
                             border: Border.all(
-                              color: Colors.red.withValues(alpha: 0.5),
+                              color: AppConstants.red.withValues(alpha: 0.5),
                             ),
                           ),
                           child: const Center(
@@ -323,23 +325,23 @@ class _UploadVideoScreenState extends State<UploadVideoScreen> {
                                   fontWeight: FontWeight.w600,
                                 ),
                               ),
-                              Row(
-                                children: [
-                                  Text(
-                                    "View All",
-                                    style: TextStyle(
-                                      color: Colors.white70,
-                                      fontSize: 14,
-                                    ),
-                                  ),
-                                  SizedBox(width: 4),
-                                  Icon(
-                                    Icons.arrow_forward_ios,
-                                    size: 14,
-                                    color: Colors.white70,
-                                  ),
-                                ],
-                              ),
+                              // Row(
+                              //   children: [
+                              //     Text(
+                              //       "View All",
+                              //       style: TextStyle(
+                              //         color: Colors.white70,
+                              //         fontSize: 14,
+                              //       ),
+                              //     ),
+                              //     SizedBox(width: 4),
+                              //     Icon(
+                              //       Icons.arrow_forward_ios,
+                              //       size: 14,
+                              //       color: Colors.white70,
+                              //     ),
+                              //   ],
+                              // ),
                             ],
                           ),
                           const SizedBox(height: 16),

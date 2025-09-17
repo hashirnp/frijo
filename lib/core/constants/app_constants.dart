@@ -9,7 +9,7 @@ class AppConstants {
 
   static const white = Colors.white;
 
-  static Color? red = Colors.red;
+  static Color red = Colors.red;
 
   String timeAgo(String isoString) {
     try {

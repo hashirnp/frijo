@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:noviindus/core/constants/app_constants.dart';
+
 import 'package:noviindus/model/category_response/category.dart';
 import 'package:noviindus/view/Widgets/category_chip_widget.dart';
 import 'package:noviindus/view/theme/constants.dart';
@@ -59,10 +62,10 @@ class ProfileHeaderWidget extends StatelessWidget {
                         horizontal: 12,
                       ),
                       decoration: BoxDecoration(
-                        color: Colors.red.shade900.withAlpha(50),
+                        color: AppConstants.red.withAlpha(50),
                         borderRadius: BorderRadius.circular(24),
 
-                        border: Border.all(color: Colors.red.shade900),
+                        border: Border.all(color: AppConstants.red),
                       ),
                       child: Row(
                         spacing: 5,

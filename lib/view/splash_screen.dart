@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:noviindus/core/constants/app_constants.dart';
 import 'package:noviindus/injection.dart';
 import 'package:noviindus/routes/routnames.dart';
@@ -11,10 +12,12 @@ class SplashScreen extends StatefulWidget {
   State<SplashScreen> createState() => _SplashScreenState();
 }
 
-class _SplashScreenState extends State<SplashScreen> {
+class _SplashScreenState extends State<SplashScreen>
+    with SingleTickerProviderStateMixin {
   @override
   void initState() {
     super.initState();
+
     _navigate();
   }
 
@@ -32,6 +35,40 @@ class _SplashScreenState extends State<SplashScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(body: Center(child: FlutterLogo(size: 120)));
+    return Scaffold(
+      body: Center(
+        child: Container(
+          // height: 120,
+          width: 120,
+          padding: const EdgeInsets.all(10),
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(15),
+            border: Border.all(color: AppConstants.red),
+          ),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Text(
+                "F",
+                textAlign: TextAlign.center,
+                style: GoogleFonts.montserrat(
+                  fontWeight: FontWeight.bold,
+                  color: AppConstants.red,
+
+                  fontSize: 100,
+                ),
+              ),
+              Text(
+                "FRIJO",
+                style: GoogleFonts.montserrat(
+                  fontSize: 20,
+                  color: AppConstants.red,
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
   }
 }

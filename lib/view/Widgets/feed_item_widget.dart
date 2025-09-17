@@ -91,7 +91,7 @@ class _FeedItemWidgetState extends State<FeedItemWidget> {
                           if (loadingProgress == null) return child;
                           return Center(
                             child: CircularProgressIndicator(
-                              color: Colors.red,
+                              color: AppConstants.red,
                               value: loadingProgress.expectedTotalBytes != null
                                   ? loadingProgress.cumulativeBytesLoaded /
                                         loadingProgress.expectedTotalBytes!

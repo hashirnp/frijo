@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:noviindus/core/constants/app_constants.dart';
 import 'package:noviindus/injection.dart';
 import 'package:noviindus/provider/feed_provider.dart';
 import 'package:noviindus/routes/routnames.dart';
@@ -31,8 +32,8 @@ class HomeScreen extends StatelessWidget {
           child: Consumer<FeedProvider>(
             builder: (context, provider, _) {
               if (provider.isLoading!) {
-                return const Center(
-                  child: CircularProgressIndicator(color: Colors.red),
+                return Center(
+                  child: CircularProgressIndicator(color: AppConstants.red),
                 );
               } else {
                 return ListView(
@@ -62,7 +63,10 @@ class HomeScreen extends StatelessWidget {
                       ...[1, 2, 3].map((e) {
                         return Shimmer(
                           gradient: LinearGradient(
-                            colors: [Colors.red.shade300, Colors.grey.shade800],
+                            colors: [
+                              AppConstants.red.withValues(alpha: 0.5),
+                              Colors.grey.shade800,
+                            ],
                             begin: Alignment.topLeft,
                             end: Alignment.bottomRight,
                           ),
