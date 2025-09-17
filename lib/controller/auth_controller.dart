@@ -8,17 +8,17 @@ class AuthController {
   AuthController(this._client);
 
   Future<Map<String, dynamic>> login({
-    required String userName,
-    required String password,
+    required String mobileNumber,
+    required String countryCode,
   }) async {
     try {
       String endpoint = ApiEndpoints.login;
       final formData = FormData.fromMap({
-        "username": userName,
-        "password": password,
+        "phone": mobileNumber,
+        "country_code": countryCode,
       });
       dynamic responseData = await _client.post(endpoint, formData, null);
-      if (responseData != null && responseData['token'] != null) {
+      if (responseData != null) {
         return responseData;
       } else {
         throw Exception("Invalid response from server");

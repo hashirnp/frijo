@@ -41,7 +41,7 @@ class DioClient {
     String url = "$baseUrl$endpoint";
     if (kDebugMode) {
       print('url: $url');
-      print('data: $data');
+      print('data: ${data.toString()}');
       print('token: $token');
     }
 
@@ -53,8 +53,10 @@ class DioClient {
     try {
       if (token == null) {
         Response response = await dio.post(url, data: data);
-
-        if (response.statusCode == 200) {
+        log("response ${response.statusCode}");
+        if (response.statusCode == 200 ||
+            response.statusCode == 201 ||
+            response.statusCode == 202) {
           return response.data;
         } else if (response.statusCode == 401) {
           Fluttertoast.showToast(msg: "Unauthorized User");
@@ -71,11 +73,13 @@ class DioClient {
       Response response = await dio.post(
         url,
         data: data,
-        options: Options(headers: {'Authorization': 'Token $token'}),
+        options: Options(headers: {'Authorization': 'Bearer $token'}),
       );
       log("response ${response.statusCode}");
 
-      if (response.statusCode == 200) {
+      if (response.statusCode == 200 ||
+          response.statusCode == 201 ||
+          response.statusCode == 202) {
         return response.data;
       } else if (response.statusCode == 401) {
         Fluttertoast.showToast(msg: "Unauthorized User");
@@ -88,6 +92,8 @@ class DioClient {
         return null;
       }
     } catch (e) {
+      log('Error: $e');
+
       if (e is DioException) {
         // Access the response's status code
         final statusCode = e.response?.statusCode;
@@ -101,7 +107,7 @@ class DioClient {
         }
       } else {
         // Handle other exceptions
-        // print('Error: $e');
+        log('Error: $e');
       }
     }
   }
@@ -120,7 +126,9 @@ class DioClient {
       if (token == null) {
         Response response = await dio.get(url);
 
-        if (response.statusCode == 200) {
+        if (response.statusCode == 200 ||
+            response.statusCode == 201 ||
+            response.statusCode == 202) {
           return response.data;
         } else if (response.statusCode == 401) {
           Fluttertoast.showToast(msg: "Unauthorized User");
@@ -139,7 +147,9 @@ class DioClient {
           options: Options(headers: {'Authorization': 'Bearer $token'}),
         );
 
-        if (response.statusCode == 200) {
+        if (response.statusCode == 200 ||
+            response.statusCode == 201 ||
+            response.statusCode == 202) {
           return response.data;
         } else {
           return null;

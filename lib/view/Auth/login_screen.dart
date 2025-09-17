@@ -4,7 +4,6 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:noviindus/core/constants/app_constants.dart';
 import 'package:noviindus/injection.dart';
 import 'package:noviindus/provider/auth_provider.dart';
-import 'package:noviindus/routes/routnames.dart';
 import 'package:noviindus/view/theme/constants.dart';
 import 'package:noviindus/view/theme/text_styles.dart';
 import 'package:provider/provider.dart';
@@ -44,9 +43,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
             if (provider.loading) {
               return Center(
-                child: CircularProgressIndicator(
-                  color: AppConstants.primaryColor,
-                ),
+                child: CircularProgressIndicator(color: AppConstants.red),
               );
             }
 
@@ -184,11 +181,10 @@ class _LoginScreenState extends State<LoginScreen> {
       ),
       floatingActionButton: GestureDetector(
         onTap: () {
-          Navigator.of(context).pushNamed(RouteNames.home);
+          // Navigator.of(context).pushNamed(RouteNames.home);
           if (_formKey.currentState!.validate()) {
-            context.read<AuthProvider>().login(
-              userName: "$_selectedCode${_mobileController.text.trim()}",
-              password: "", // no password here?
+            getIt<AuthProvider>().login(
+              mobileNumber: "$_selectedCode${_mobileController.text.trim()}",
             );
           }
         },

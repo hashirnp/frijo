@@ -1,7 +1,6 @@
 class ApiEndpoints {
-  static const String login = "Login";
-  static const String patients = "PatientList";
-  static const String branches = "BranchList";
-  static const String treatments = "TreatmentList";
-  static const String patientUpdate = "PatientUpdate";
+  static const String login = "otp_verified";
+  static const String category = "category_list";
+  static const String home = "home";
+  static const String myFeed = "my_feed";
 }

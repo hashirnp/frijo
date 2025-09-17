@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:noviindus/provider/auth_provider.dart';
+import 'package:noviindus/provider/feed_provider.dart';
 import 'package:noviindus/routes/router.dart';
 import 'package:noviindus/routes/routnames.dart';
 import 'package:noviindus/view/splash_screen.dart';
@@ -18,6 +19,9 @@ void main() async {
     MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (context) => getIt<AuthProvider>()),
+        ChangeNotifierProvider(
+          create: (context) => getIt<FeedProvider>()..init(),
+        ),
       ],
       child: const MyApp(),
     ),

@@ -42,21 +42,17 @@ class AuthProvider with ChangeNotifier {
     notifyListeners();
   }
 
-  Future<void> login({
-    required String userName,
-    required String password,
-  }) async {
-    log("Login called");
+  Future<void> login({required String mobileNumber}) async {
     _loginFailed = false;
     setLoading(true);
 
     try {
       final responseData = await _controller.login(
-        userName: userName,
-        password: password,
+        mobileNumber: mobileNumber,
+        countryCode: '+91',
       );
       if (responseData.containsKey('token')) {
-        _token = responseData['token'];
+        _token = responseData['token']['access'];
         await getIt<SharedPreferences>().setString(AppConstants.token, _token!);
         _isAuth = true;
       } else {

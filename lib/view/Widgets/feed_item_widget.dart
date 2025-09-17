@@ -1,24 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:noviindus/core/constants/app_constants.dart';
+import 'package:noviindus/model/video_modal/video_modal.dart';
 import 'package:noviindus/view/Widgets/expandable_text.dart';
 import 'package:video_player/video_player.dart';
 import 'package:chewie/chewie.dart';
 
 class FeedItemWidget extends StatefulWidget {
-  final String videoUrl;
-  final String thumbnailUrl;
-  final String userName;
-  final String timeAgo;
-  final String description;
+  final VideoModal video;
 
-  const FeedItemWidget({
-    super.key,
-    required this.videoUrl,
-    required this.thumbnailUrl,
-    required this.userName,
-    required this.timeAgo,
-    required this.description,
-  });
+  const FeedItemWidget({super.key, required this.video});
 
   @override
   State<FeedItemWidget> createState() => _FeedItemWidgetState();
@@ -34,7 +24,7 @@ class _FeedItemWidgetState extends State<FeedItemWidget> {
     super.initState();
 
     _videoController =
-        VideoPlayerController.networkUrl(Uri.parse(widget.videoUrl))
+        VideoPlayerController.networkUrl(Uri.parse(widget.video.video!))
           ..initialize().then((_) {
             setState(() {});
           });
@@ -78,11 +68,11 @@ class _FeedItemWidgetState extends State<FeedItemWidget> {
               backgroundImage: AssetImage("assets/images/user_placeholder.jpg"),
             ),
             title: Text(
-              widget.userName,
+              widget.video.user!.name ?? "Unknown User",
               style: const TextStyle(color: Colors.white),
             ),
             subtitle: Text(
-              AppConstants().timeAgo(widget.timeAgo),
+              AppConstants().timeAgo(widget.video.createdAt!.toIso8601String()),
               style: TextStyle(color: Colors.grey[400]),
             ),
           ),
@@ -95,7 +85,7 @@ class _FeedItemWidgetState extends State<FeedItemWidget> {
                     fit: StackFit.expand,
                     children: [
                       Image.network(
-                        widget.thumbnailUrl,
+                        widget.video.image!,
                         fit: BoxFit.cover,
                         loadingBuilder: (context, child, loadingProgress) {
                           if (loadingProgress == null) return child;
@@ -133,7 +123,10 @@ class _FeedItemWidgetState extends State<FeedItemWidget> {
 
           Padding(
             padding: const EdgeInsets.all(12.0),
-            child: ExpandableText(text: widget.description, trimLines: 3),
+            child: ExpandableText(
+              text: widget.video.description!,
+              trimLines: 3,
+            ),
           ),
         ],
       ),

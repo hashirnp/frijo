@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
 import 'package:noviindus/controller/auth_controller.dart';
 import 'package:noviindus/controller/registration_controller.dart';
-import 'package:noviindus/controller/home_controller.dart';
+import 'package:noviindus/controller/feed_controller.dart';
 import 'package:noviindus/provider/auth_provider.dart';
+import 'package:noviindus/provider/feed_provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'core/network/dio_client.dart';
 
@@ -15,7 +16,7 @@ Future<void> setupLocator() async {
   getIt.registerSingleton<DioClient>(DioClient());
 
   getIt.registerSingleton<AuthController>(AuthController(getIt<DioClient>()));
-  getIt.registerSingleton<HomeController>(HomeController(getIt<DioClient>()));
+  getIt.registerSingleton<FeedController>(FeedController(getIt<DioClient>()));
   getIt.registerSingleton<RegistrationController>(
     RegistrationController(getIt<DioClient>()),
   );
@@ -25,6 +26,7 @@ Future<void> setupLocator() async {
   );
 
   getIt.registerSingleton<AuthProvider>(AuthProvider());
+  getIt.registerSingleton<FeedProvider>(FeedProvider());
 }
 
 class NavigationService {

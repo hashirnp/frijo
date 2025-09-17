@@ -1,23 +1,13 @@
 import 'package:flutter/material.dart';
 
 class AppConstants {
-  static const String baseUrl = "https://flutter-amr.noviindus.in/api/";
+  static const String baseUrl = "https://frijo.noviindus.in/api/";
   static const int connectTimeout = 5000; // ms
   static const int receiveTimeout = 3000;
 
   static const String token = "token";
 
-  static const loginBg = "assets/images/splash_background.jpg";
-  static const appLogo = "assets/images/logo.png";
-  static const primaryColor = Color(0xFF006837);
   static const white = Colors.white;
-
-  static const List<String> locations = [
-    "Kozhikode",
-    "Malappuram",
-    "Palakkad",
-    "Kollam",
-  ];
 
   static Color? red = Colors.red;
 

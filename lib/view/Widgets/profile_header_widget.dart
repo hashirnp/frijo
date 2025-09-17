@@ -1,11 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:noviindus/model/category_response/category.dart';
 import 'package:noviindus/view/Widgets/category_chip_widget.dart';
 import 'package:noviindus/view/theme/constants.dart';
 import 'package:noviindus/view/theme/text_styles.dart';
 
 class ProfileHeaderWidget extends StatelessWidget {
-  const ProfileHeaderWidget({super.key});
+  final List<Category> categories;
+  final int selectedIndex;
+
+  const ProfileHeaderWidget({
+    super.key,
+    required this.categories,
+    required this.selectedIndex,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -77,8 +85,14 @@ class ProfileHeaderWidget extends StatelessWidget {
                       height: 40,
                     ),
                     horizontalSpace(24),
-                    ...["Art", "Science", "History", "Technology"].map((e) {
-                      return CategoryChipWidget(title: e, isSelected: false);
+                    ...categories.asMap().entries.map((entry) {
+                      final index = entry.key; // index of the category
+                      final e = entry.value; // category object itself
+                      return CategoryChipWidget(
+                        title: e.title!,
+                        isSelected: selectedIndex == index,
+                        index: index,
+                      );
                     }),
                   ],
                 ),
