@@ -32,6 +32,7 @@ import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:frijo/core/constants/app_constants.dart';
 import 'package:frijo/injection.dart';
+import 'package:frijo/provider/feed_provider.dart';
 import 'package:frijo/view/splash_screen.dart';
 
 class DioClient {
@@ -74,6 +75,10 @@ class DioClient {
         url,
         data: data,
         options: Options(headers: {'Authorization': 'Bearer $token'}),
+        onSendProgress: (sent, total) {
+          double progress = (sent / total);
+          getIt<FeedProvider>().setUploadPresent(progress);
+        },
       );
       log("response ${response.statusCode}");
 

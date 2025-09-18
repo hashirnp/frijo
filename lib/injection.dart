@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
 import 'package:frijo/controller/auth_controller.dart';
-import 'package:frijo/controller/registration_controller.dart';
 import 'package:frijo/controller/feed_controller.dart';
 import 'package:frijo/provider/auth_provider.dart';
 import 'package:frijo/provider/feed_provider.dart';
@@ -17,9 +16,6 @@ Future<void> setupLocator() async {
 
   getIt.registerSingleton<AuthController>(AuthController(getIt<DioClient>()));
   getIt.registerSingleton<FeedController>(FeedController(getIt<DioClient>()));
-  getIt.registerSingleton<RegistrationController>(
-    RegistrationController(getIt<DioClient>()),
-  );
 
   getIt.registerSingleton<SharedPreferences>(
     await SharedPreferences.getInstance(),

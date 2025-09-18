@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/cupertino.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:frijo/controller/feed_controller.dart';
@@ -11,6 +13,18 @@ class FeedProvider with ChangeNotifier {
 
   bool? _isLoading = false;
   bool? get isLoading => _isLoading;
+
+  bool? _isUploadStart = false;
+  bool? get isUploadStart => _isUploadStart;
+
+  double? _uploadPresent = 0.0;
+  double? get uploadPresent => _uploadPresent;
+
+  setUploadPresent(val) {
+    _uploadPresent = val;
+    log("message is called $_uploadPresent");
+    notifyListeners();
+  }
 
   String? _description;
   String? get description => _description;
@@ -73,6 +87,11 @@ class FeedProvider with ChangeNotifier {
     notifyListeners();
   }
 
+  void setUploadStart(bool value) {
+    _isUploadStart = value;
+    notifyListeners();
+  }
+
   void init() async {
     setLoading(true);
     fetchCategories();
@@ -92,6 +111,7 @@ class FeedProvider with ChangeNotifier {
 
   void sharePost() async {
     setLoading(true);
+    setUploadStart(true);
     if (_video == null || _thumbnail == null || _selectedCategories.isEmpty) {
       _errorMessage = "Please provide all required fields.";
       _postShareStatus = false;
@@ -115,11 +135,13 @@ class FeedProvider with ChangeNotifier {
       _errorMessage = "Failed to share post. Please try again.";
     }
     setLoading(false);
+    setUploadStart(false);
     notifyListeners();
   }
 
   void resetPostStatus() {
     _postShareStatus = null;
+    _uploadPresent = 0.0;
     _errorMessage = null;
     notifyListeners();
   }

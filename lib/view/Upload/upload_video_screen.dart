@@ -39,6 +39,25 @@ class _UploadVideoScreenState extends State<UploadVideoScreen> {
       backgroundColor: const Color.fromRGBO(0, 0, 0, 1),
       body: Consumer<FeedProvider>(
         builder: (context, provider, child) {
+          if (provider.isUploadStart!) {
+            return Center(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                spacing: 10,
+                children: [
+                  CircularProgressIndicator(
+                    value: provider.uploadPresent,
+                    color: AppConstants.red,
+                  ),
+                  Text(
+                    "${(provider.uploadPresent! * 100).toStringAsFixed(2)} % Completed",
+                  ),
+                ],
+              ),
+            );
+          }
+
           if (provider.isLoading!) {
             return Center(
               child: CircularProgressIndicator(color: AppConstants.red),
@@ -178,14 +197,20 @@ class _UploadVideoScreenState extends State<UploadVideoScreen> {
                                 child: Column(
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
-                                    SvgPicture.asset(
-                                      "assets/images/upload_video_icon.svg",
-                                      height: 40,
-                                      colorFilter: ColorFilter.mode(
-                                        Colors.white,
-                                        BlendMode.srcIn,
-                                      ),
-                                    ),
+                                    provider.video != null
+                                        ? const Icon(
+                                            Icons.done,
+                                            color: Colors.red,
+                                            size: 48,
+                                          )
+                                        : SvgPicture.asset(
+                                            "assets/images/upload_video_icon.svg",
+                                            height: 40,
+                                            colorFilter: ColorFilter.mode(
+                                              Colors.white,
+                                              BlendMode.srcIn,
+                                            ),
+                                          ),
                                     const SizedBox(height: 8),
 
                                     Text(
@@ -236,14 +261,20 @@ class _UploadVideoScreenState extends State<UploadVideoScreen> {
                                 child: Column(
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
-                                    SvgPicture.asset(
-                                      "assets/images/upload_thum_logo.svg",
-                                      // height: 40,
-                                      colorFilter: ColorFilter.mode(
-                                        Colors.white,
-                                        BlendMode.srcIn,
-                                      ),
-                                    ),
+                                    provider.thumbnail != null
+                                        ? const Icon(
+                                            Icons.done,
+                                            color: Colors.red,
+                                            size: 48,
+                                          )
+                                        : SvgPicture.asset(
+                                            "assets/images/upload_thum_logo.svg",
+                                            // height: 40,
+                                            colorFilter: ColorFilter.mode(
+                                              Colors.white,
+                                              BlendMode.srcIn,
+                                            ),
+                                          ),
                                     const SizedBox(height: 8),
                                     Text(
                                       provider.thumbnail != null
