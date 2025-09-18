@@ -2,8 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:frijo/core/constants/app_constants.dart';
+import 'package:frijo/injection.dart';
 
 import 'package:frijo/model/category_response/category.dart';
+import 'package:frijo/provider/auth_provider.dart';
+import 'package:frijo/routes/routnames.dart';
 import 'package:frijo/view/Widgets/category_chip_widget.dart';
 import 'package:frijo/view/theme/constants.dart';
 import 'package:frijo/view/theme/text_styles.dart';
@@ -35,13 +38,37 @@ class ProfileHeaderWidget extends StatelessWidget {
                   Text("Welcome Back to Section", style: t500_14),
                 ],
               ),
-              CircleAvatar(
-                radius: 32,
-                backgroundColor:
-                    Colors.grey.shade800, // subtle bg for empty state
-                backgroundImage: const AssetImage(
-                  "assets/images/user_placeholder.jpg",
-                ),
+              Row(
+                children: [
+                  IconButton(
+                    onPressed: () async {
+                      final status = await getIt<AuthProvider>().logout();
+                      if (status) {
+                        Navigator.of(
+                          getIt<NavigationService>()
+                              .navigatorkey
+                              .currentContext!,
+                        ).pushNamedAndRemoveUntil(
+                          RouteNames.login,
+                          (route) => false,
+                        );
+                      }
+                    },
+                    icon: const Icon(
+                      Icons.logout,
+                      size: 32,
+                      color: Colors.white,
+                    ),
+                  ),
+                  CircleAvatar(
+                    radius: 32,
+                    backgroundColor:
+                        Colors.grey.shade800, // subtle bg for empty state
+                    backgroundImage: const AssetImage(
+                      "assets/images/user_placeholder.jpg",
+                    ),
+                  ),
+                ],
               ),
             ],
           ),

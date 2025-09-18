@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:frijo/controller/home_controller.dart';
+import 'package:frijo/provider/home_provider.dart';
 import 'package:get_it/get_it.dart';
 import 'package:frijo/controller/auth_controller.dart';
 import 'package:frijo/controller/feed_controller.dart';
@@ -16,6 +18,7 @@ Future<void> setupLocator() async {
 
   getIt.registerSingleton<AuthController>(AuthController(getIt<DioClient>()));
   getIt.registerSingleton<FeedController>(FeedController(getIt<DioClient>()));
+  getIt.registerSingleton<HomeController>(HomeController(getIt<DioClient>()));
 
   getIt.registerSingleton<SharedPreferences>(
     await SharedPreferences.getInstance(),
@@ -23,6 +26,7 @@ Future<void> setupLocator() async {
 
   getIt.registerSingleton<AuthProvider>(AuthProvider());
   getIt.registerSingleton<FeedProvider>(FeedProvider());
+  getIt.registerSingleton<HomeProvider>(HomeProvider());
 }
 
 class NavigationService {

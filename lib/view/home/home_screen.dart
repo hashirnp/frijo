@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:frijo/core/constants/app_constants.dart';
 import 'package:frijo/injection.dart';
-import 'package:frijo/provider/feed_provider.dart';
+import 'package:frijo/provider/home_provider.dart';
 import 'package:frijo/routes/routnames.dart';
 import 'package:frijo/view/Widgets/feed_item_widget.dart';
 import 'package:frijo/view/Widgets/profile_header_widget.dart';
@@ -26,10 +26,10 @@ class HomeScreen extends StatelessWidget {
       ),
       body: RefreshIndicator(
         onRefresh: () async {
-          getIt<FeedProvider>().init();
+          getIt<HomeProvider>().init();
         },
         child: SafeArea(
-          child: Consumer<FeedProvider>(
+          child: Consumer<HomeProvider>(
             builder: (context, provider, _) {
               if (provider.isLoading!) {
                 return Center(

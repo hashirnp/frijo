@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:frijo/controller/home_controller.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:frijo/core/constants/app_constants.dart';
 import 'package:frijo/injection.dart';
@@ -21,6 +22,14 @@ class _UploadVideoScreenState extends State<UploadVideoScreen> {
   final descriptionController = TextEditingController();
   final imagePicker = ImagePicker();
   final formKey = GlobalKey<FormState>();
+
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      getIt<FeedProvider>().init();
+    });
+  }
 
   @override
   void dispose() {
@@ -89,7 +98,7 @@ class _UploadVideoScreenState extends State<UploadVideoScreen> {
               );
               provider
                   .resetPostStatus(); // Clear the error message after showing
-              provider.fetchVideos();
+              getIt<HomeController>().fetchVideos();
               Navigator.of(context).pop();
             });
           }

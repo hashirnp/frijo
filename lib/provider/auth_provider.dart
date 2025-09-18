@@ -21,21 +21,8 @@ class AuthProvider with ChangeNotifier {
   String? _token;
   String? get token => _token;
 
-  String _email = "";
-  String _password = "";
 
-  String get email => _email;
-  String get password => _password;
-
-  void setEmail(String value) {
-    _email = value;
-    notifyListeners();
-  }
-
-  void setPassword(String value) {
-    _password = value;
-    notifyListeners();
-  }
+ 
 
   void setLoading(bool value) {
     _loading = value;

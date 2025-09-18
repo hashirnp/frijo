@@ -23,31 +23,31 @@ class _LoginScreenState extends State<LoginScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.black,
-      resizeToAvoidBottomInset: true,
-      body: SafeArea(
-        child: Consumer<AuthProvider>(
-          builder: (context, provider, _) {
-            WidgetsBinding.instance.addPostFrameCallback((_) {
-              if (provider.loginFailed && !provider.isAuth) {
-                Fluttertoast.showToast(
-                  msg: "Something went wrong, Please try again",
-                );
-                getIt<AuthProvider>().setLoginStatus(false);
-              }
-              if (provider.isAuth && mounted) {
-                Navigator.pushReplacementNamed(context, '/home');
-              }
-            });
+    return Consumer<AuthProvider>(
+      builder: (context, provider, _) {
+        WidgetsBinding.instance.addPostFrameCallback((_) {
+          if (provider.loginFailed && !provider.isAuth) {
+            Fluttertoast.showToast(
+              msg: "Something went wrong, Please try again",
+            );
+            getIt<AuthProvider>().setLoginStatus(false);
+          }
+          if (provider.isAuth && mounted) {
+            Navigator.pushReplacementNamed(context, '/home');
+          }
+        });
 
-            if (provider.loading) {
-              return Center(
-                child: CircularProgressIndicator(color: AppConstants.red),
-              );
-            }
+        if (provider.loading) {
+          return Center(
+            child: CircularProgressIndicator(color: AppConstants.red),
+          );
+        }
 
-            return Form(
+        return Scaffold(
+          backgroundColor: Colors.black,
+          resizeToAvoidBottomInset: true,
+          body: SafeArea(
+            child: Form(
               key: _formKey,
               child: SingleChildScrollView(
                 padding: const EdgeInsets.all(16),
@@ -150,7 +150,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                   width: 1.2,
                                 ),
                               ),
-                              enabledBorder: OutlineInputBorder(
+                              focusedBorder: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(12),
                                 borderSide: BorderSide(
                                   color: Colors.white.withAlpha(100),
@@ -175,45 +175,58 @@ class _LoginScreenState extends State<LoginScreen> {
                   ],
                 ),
               ),
-            );
-          },
-        ),
-      ),
-      floatingActionButton: GestureDetector(
-        onTap: () {
-          // Navigator.of(context).pushNamed(RouteNames.home);
-          if (_formKey.currentState!.validate()) {
-            getIt<AuthProvider>().login(
-              mobileNumber: "$_selectedCode${_mobileController.text.trim()}",
-            );
-          }
-        },
-        child: Container(
-          padding: const EdgeInsets.all(8),
-          margin: EdgeInsets.only(
-            bottom: MediaQuery.sizeOf(context).height * 0.115,
+            ),
           ),
-          decoration: BoxDecoration(
-            color: Colors.grey.shade900,
-            border: Border.all(color: Colors.white.withAlpha(100), width: 1.2),
-            borderRadius: BorderRadius.circular(12),
-          ),
-          child: Row(
-            mainAxisSize: MainAxisSize.min,
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Text("Continue", style: t400_13.copyWith(color: Colors.white)),
-              horizontalSpace(8),
-              CircleAvatar(
-                backgroundColor: AppConstants.red,
-                radius: 16,
-                child: Icon(CupertinoIcons.forward, color: AppConstants.white),
-              ),
-            ],
-          ),
-        ),
-      ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+          floatingActionButton: provider.loading
+              ? const SizedBox()
+              : GestureDetector(
+                  onTap: () {
+                    // Navigator.of(context).pushNamed(RouteNames.home);
+                    if (_formKey.currentState!.validate()) {
+                      getIt<AuthProvider>().login(
+                        mobileNumber:
+                            "$_selectedCode${_mobileController.text.trim()}",
+                      );
+                    }
+                  },
+                  child: Container(
+                    padding: const EdgeInsets.all(8),
+                    margin: EdgeInsets.only(
+                      bottom: MediaQuery.sizeOf(context).height * 0.115,
+                    ),
+                    decoration: BoxDecoration(
+                      color: Colors.grey.shade900,
+                      border: Border.all(
+                        color: Colors.white.withAlpha(100),
+                        width: 1.2,
+                      ),
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                    child: Row(
+                      mainAxisSize: MainAxisSize.min,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                          "Continue",
+                          style: t400_13.copyWith(color: Colors.white),
+                        ),
+                        horizontalSpace(8),
+                        CircleAvatar(
+                          backgroundColor: AppConstants.red,
+                          radius: 16,
+                          child: Icon(
+                            CupertinoIcons.forward,
+                            color: AppConstants.white,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+          floatingActionButtonLocation:
+              FloatingActionButtonLocation.centerFloat,
+        );
+      },
     );
   }
 }

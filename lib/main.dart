@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:frijo/provider/home_provider.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:frijo/provider/auth_provider.dart';
 import 'package:frijo/provider/feed_provider.dart';
@@ -18,10 +19,12 @@ void main() async {
   runApp(
     MultiProvider(
       providers: [
-        ChangeNotifierProvider(create: (context) => getIt<AuthProvider>()),
         ChangeNotifierProvider(
-          create: (context) => getIt<FeedProvider>()..init(),
+          create: (context) => getIt<HomeProvider>()..init(),
         ),
+        ChangeNotifierProvider(create: (context) => getIt<AuthProvider>()),
+
+        ChangeNotifierProvider(create: (context) => getIt<FeedProvider>()),
       ],
       child: const MyApp(),
     ),

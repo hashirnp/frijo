@@ -1,12 +1,10 @@
-import 'dart:developer';
-
 import 'package:flutter/cupertino.dart';
-import 'package:image_picker/image_picker.dart';
 import 'package:frijo/controller/feed_controller.dart';
 import 'package:frijo/injection.dart';
 import 'package:frijo/model/category_response/category.dart';
 import 'package:frijo/model/category_response/category_response.dart';
-import 'package:frijo/model/video_modal/video_modal.dart';
+import 'package:frijo/provider/home_provider.dart';
+import 'package:image_picker/image_picker.dart';
 
 class FeedProvider with ChangeNotifier {
   final FeedController _controller = getIt<FeedController>();
@@ -22,7 +20,6 @@ class FeedProvider with ChangeNotifier {
 
   setUploadPresent(val) {
     _uploadPresent = val;
-    log("message is called $_uploadPresent");
     notifyListeners();
   }
 
@@ -79,9 +76,6 @@ class FeedProvider with ChangeNotifier {
     notifyListeners();
   }
 
-  List<VideoModal> _videos = [];
-  List<VideoModal> get videos => _videos;
-
   void setLoading(bool value) {
     _isLoading = value;
     notifyListeners();
@@ -95,17 +89,11 @@ class FeedProvider with ChangeNotifier {
   void init() async {
     setLoading(true);
     fetchCategories();
-    fetchVideos();
     setLoading(false);
   }
 
   void fetchCategories() async {
-    _categoryResponse = await _controller.fetchCategories();
-    notifyListeners();
-  }
-
-  void fetchVideos() async {
-    _videos = await _controller.fetchVideos();
+    _categoryResponse = getIt<HomeProvider>().categoryResponse;
     notifyListeners();
   }
 
